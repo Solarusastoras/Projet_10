@@ -1,11 +1,11 @@
-import './_footer.scss'
+import "./_footer.scss";
 
 function Footer() {
-    return (
-        <div>
-            <p class="footer-text">Copyright 2020 Argent Bank</p>
-        </div>
-    );
+  return (
+    <div class="footer">
+      <p class="footer-text">Copyright 2020 Argent Bank</p>
+    </div>
+  );
 }
 
 export default Footer;

@@ -1,3 +1,5 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 .main-nav {
     display: flex;
     justify-content: space-between;
@@ -31,4 +33,13 @@
 .main-nav-logo-image {
     max-width: 100%;
     width: 200px;
+}
+
+.fa-user-circle {
+    margin-right: 5px;
+}
+
+.header {
+    color: #fff;
+    margin-bottom: 2rem;
 }

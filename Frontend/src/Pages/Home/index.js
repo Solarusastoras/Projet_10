@@ -1,10 +1,12 @@
-import './_home.scss';
-
+import "./_home.scss";
+import Hero from "../../Components/Hero/index.jsx";
+import Features from "../../Components/Features/index.jsx";
 
 function Home() {
   return (
-    <div className="home">
-      <h1>Home</h1>
+    <div>
+      <Hero />
+      <Features />
     </div>
   );
 }
