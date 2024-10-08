@@ -3,6 +3,16 @@
   flex: 1;
 }
 
+main {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+.header {
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center;
+}
 
 .account {
   display: flex;
