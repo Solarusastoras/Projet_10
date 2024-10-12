@@ -1,34 +1,55 @@
+// Définition des variables
+// Variable definitions
 
+$primary-color: #00bc77;
+$secondary-color: #222;
+$border-width: 10px;
+$border-radius: 50%;
+$padding: 1rem;
+$font-size-title: 1.25rem;
+$font-weight-bold: bold;
+$margin-bottom-title: 0.5rem;
 
-@media (min-width: 920px) {
-  
-  .features {
-    display: flex;
-    flex-direction: column;
-  }
-  
+// Définition des styles
+// Style definitions
+.features {
+  display: flex;
+  flex-direction: column;
+
   @media (min-width: 920px) {
-    .features {
-      flex-direction: row;
-    }
+    flex-direction: row;
   }
-  
-  .feature-icon {
-    width: 20px;
-    border: 10px solid #00bc77;
-    border-radius: 50%;
-    padding: 1rem;
-  }
-  
-  .feature-item {
-    flex: 1;
-    padding: 2.5rem;
-  }
-  
-  .feature-item-title {
-    color: #222;
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+
+.feature-icon {
+  width: 100px;
+  border: $border-width solid $primary-color;
+  border-radius: $border-radius;
+  padding: $padding;
+}
+
+.feature-item {
+  flex: 1;
+  padding: 2.5rem;
+}
+
+.feature-item-title {
+  color: $secondary-color;
+  font-size: $font-size-title;
+  font-weight: $font-weight-bold;
+  margin-bottom: $margin-bottom-title;
 }

@@ -22,9 +22,11 @@ function Form() {
 
   useEffect(() => {
     if (token) {
+      console.log('Token:', token);
+      console.log('Username:', username);
       navigate('/user');
     }
-  }, [token, navigate]);
+  }, [token, navigate, username]);
 
   return (
     <form onSubmit={handleSubmit}>
