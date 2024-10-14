@@ -1,4 +1,9 @@
+
 import "./_user.scss";
+import NewUserProfile from "../../Components/UpdateUsername";
+
+
+
 
 function User() {
   return (
@@ -7,9 +12,11 @@ function User() {
         <h1>
           Welcome back
           <br />
-          Nom Utilisateur API
+          <div>
+          <NewUserProfile />
+    </div>
         </h1>
-        <button className="edit-button">Edit Name</button>
+       
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
@@ -45,5 +52,6 @@ function User() {
     </main>
   );
 }
+
 
 export default User;

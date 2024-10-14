@@ -25,14 +25,16 @@ export const loginUser = createAsyncThunk(
 
 export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
-  async (token, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const token = getState().auth.token;
     return apiCall('post', 'http://localhost:3001/api/v1/user/profile', null, token, rejectWithValue);
   }
 );
 
 export const updateUserProfileUsername = createAsyncThunk(
   'auth/updateUserProfileUsername',
-  async ({ token, newUsername }, { rejectWithValue }) => {
+  async ({ newUsername }, { getState, rejectWithValue }) => {
+    const token = getState().auth.token;
     return apiCall('put', 'http://localhost:3001/api/v1/user/profile', { userName: newUsername }, token, rejectWithValue);
   }
 );
