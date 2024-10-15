@@ -1,30 +1,27 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import UserModal from "../utils/UserModal";
-import UpdateUsername from "../UpdateUsername";
+import EditUser from "../EditUser";
 
 const NewUserProfile = () => {
   const { user } = useSelector((state) => state.auth);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const handleOpenEdit = () => {
+    setIsEditing(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseEdit = () => {
+    setIsEditing(false);
   };
 
   return (
     <div>
       {user && (
         <>
-          <button className="edit-button" onClick={handleOpenModal}>
+          <button className="edit-button" onClick={handleOpenEdit}>
             Edit Name
           </button>
-          <UserModal isOpen={isModalOpen} onClose={handleCloseModal}>
-            <UpdateUsername onClose={handleCloseModal} />
-          </UserModal>
+          {isEditing && <EditUser onClose={handleCloseEdit} />}
         </>
       )}
     </div>

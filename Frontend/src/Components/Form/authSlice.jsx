@@ -27,15 +27,28 @@ export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
   async (_, { getState, rejectWithValue }) => {
     const token = getState().auth.token;
-    return apiCall('post', 'http://localhost:3001/api/v1/user/profile', null, token, rejectWithValue);
+    try {
+      const response = await axios.get('http://localhost:3001/api/v1/user/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data.body;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
 export const updateUserProfileUsername = createAsyncThunk(
   'auth/updateUserProfileUsername',
-  async ({ newUsername }, { getState, rejectWithValue }) => {
+  async ({ newUsername, firstName, lastName }, { getState, rejectWithValue }) => {
     const token = getState().auth.token;
-    return apiCall('put', 'http://localhost:3001/api/v1/user/profile', { userName: newUsername }, token, rejectWithValue);
+    console.log('Sending update request with:', { newUsername, firstName, lastName });
+    return apiCall('put', 'http://localhost:3001/api/v1/user/profile', { userName: newUsername, firstName, lastName }, token, rejectWithValue);
   }
 );
 
@@ -60,7 +73,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
-    token: null,
+    token: localStorage.getItem('token') || null,
     loading: false,
     error: null,
   },
@@ -68,6 +81,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.token = null;
+      localStorage.removeItem('token');
     },
   },
   extraReducers: (builder) => {
@@ -80,11 +94,21 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, handleRejected)
       .addCase(fetchUserProfile.pending, handlePending)
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
+        console.log('Fetched user profile:', {
+          username: action.payload.userName,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+        });
         handleFulfilled(state, action, 'user');
       })
       .addCase(fetchUserProfile.rejected, handleRejected)
       .addCase(updateUserProfileUsername.pending, handlePending)
       .addCase(updateUserProfileUsername.fulfilled, (state, action) => {
+        console.log('Updated user info:', {
+          username: action.payload.userName,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+        });
         handleFulfilled(state, action, 'user');
       })
       .addCase(updateUserProfileUsername.rejected, handleRejected);

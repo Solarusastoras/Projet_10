@@ -8,7 +8,7 @@ import Login from "./Pages/Login";
 import User from "./Pages/User";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import { store } from "./store";
+import { store } from "./Store/store";
 import { Provider } from "react-redux";
 import ProtectedRoute from "../src/Components/utils/Protect_Route";
 
