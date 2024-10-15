@@ -1,9 +1,8 @@
-
+import React from "react";
 import "./_login.scss";
 import Form from "../../Components/Form/index.jsx";
 
-
-function Login() {
+const Login = () => {
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
@@ -13,6 +12,6 @@ function Login() {
       </section>
     </main>
   );
-}
+};
 
 export default Login;

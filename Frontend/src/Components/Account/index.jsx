@@ -1,6 +1,7 @@
 import "./.account.scss";
 
 function Account() {
+
   return (
     <div>
       <h2 className="sr-only">Accounts</h2>

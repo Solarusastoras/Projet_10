@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../Form/authSlice';
+import { logout } from '../../Store/AuthSlice';
 import "./_header.scss";
 import useToken from '../utils/Token';
 import Logo from "../../img/argentBankLogo.png";

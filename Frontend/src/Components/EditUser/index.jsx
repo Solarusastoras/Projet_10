@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserProfileUsername } from "../Form/authSlice";
+import { updateUserProfileUsername } from "../../Store/AuthSlice";
 import "./_edituser.scss";
 
 const EditUser = ({ onClose }) => {
@@ -23,8 +23,7 @@ const EditUser = ({ onClose }) => {
     dispatch(updateUserProfileUsername({ newUsername, firstName, lastName }))
       .unwrap()
       .then(() => {
-        console.log('User info updated successfully');
-        onClose(); // Fermer le formulaire après la soumission réussie
+        onClose(); 
       })
       .catch((error) => {
         console.error('Failed to update user info:', error);
