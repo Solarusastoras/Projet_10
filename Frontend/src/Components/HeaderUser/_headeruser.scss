@@ -1,0 +1,19 @@
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.main-nav a {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-right: 0.9rem;
+}
+.main-nav-item {
+    text-decoration: none;
+    margin-right: 0.9rem;
+}

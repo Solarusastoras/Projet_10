@@ -58,6 +58,7 @@ export const updateUserProfileUsername = createAsyncThunk(
     const token = getState().auth.token;
     try {
       const updatedProfile = await apiCallWithAuth('/profile', 'put', { userName: newUsername }, token);
+      localStorage.setItem('username', updatedProfile.userName);
       return updatedProfile;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);

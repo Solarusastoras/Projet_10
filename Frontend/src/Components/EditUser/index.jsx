@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserProfileUsername } from "../../Store/AuthSlice";
+import useUsername from "../utils/use_username";
 import "./_edituser.scss";
 
 const EditUser = ({ onClose }) => {
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector((state) => state.auth);
-  const [newUsername, setNewUsername] = useState(user?.userName || '');
-  const [firstName, setFirstName] = useState(user?.firstName || '');
-  const [lastName, setLastName] = useState(user?.lastName || '');
+  const [username, setUsername] = useUsername();
+  const [newUsername, setNewUsername] = useState(username);
+  const [firstName, setFirstName] = useState(user?.firstName || "");
+  const [lastName, setLastName] = useState(user?.lastName || "");
 
   useEffect(() => {
     if (user) {
-      setNewUsername(user.userName || '');
-      setFirstName(user.firstName || '');
-      setLastName(user.lastName || '');
+      setNewUsername(user.userName || "");
+      setFirstName(user.firstName || "");
+      setLastName(user.lastName || "");
     }
   }, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserProfileUsername({ newUsername, firstName, lastName }))
+    dispatch(updateUserProfileUsername({ newUsername }))
       .unwrap()
       .then(() => {
-        onClose(); 
+        setUsername(newUsername); // Met à jour le hook personnalisé
+        onClose();
       })
       .catch((error) => {
-        console.error('Failed to update user info:', error);
+        console.error("Failed to update user info:", error);
       });
   };
 
@@ -52,8 +55,7 @@ const EditUser = ({ onClose }) => {
           type="text"
           placeholder="First name"
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
+          disabled
         />
         <br />
         <label htmlFor="lastname">Last Name:</label>
@@ -63,8 +65,7 @@ const EditUser = ({ onClose }) => {
           type="text"
           placeholder="Last name"
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
+          disabled
         />
         <br />
         <button type="submit" className="edit-button">
@@ -78,6 +79,6 @@ const EditUser = ({ onClose }) => {
       {error && <p className="error">{error}</p>}
     </div>
   );
-}
+};
 
 export default EditUser;
