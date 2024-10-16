@@ -22,8 +22,7 @@ function HeaderUser() {
   return (
     <nav className="main-nav">
       <Link to="/" className="main-nav-logo">
-        <LogoHeader
-        />
+        <LogoHeader />
       </Link>
       <div className="main-nav-items">
         {isUserPage ? (
