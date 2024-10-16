@@ -68,10 +68,14 @@ const EditUser = ({ onClose }) => {
           disabled
         />
         <br />
-        <button type="submit" className="edit-button">
+        <button type="submit" className="edit-button - marge_d - edit-buttons">
           Save
         </button>
-        <button type="button" className="edit-button" onClick={onClose}>
+        <button
+          type="button"
+          className="edit-button - edit-buttons"
+          onClick={onClose}
+        >
           Cancel
         </button>
       </form>
