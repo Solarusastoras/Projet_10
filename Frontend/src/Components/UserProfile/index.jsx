@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserProfile } from "../../Store/AuthSlice";
+import { fetchUserProfile } from "../../Store/AuthAction.js";
 import { useNavigate } from "react-router-dom";
 import "./_userprofile.scss"; // Assurez-vous d'importer le fichier SCSS
 
@@ -22,7 +22,7 @@ const UserProfile = () => {
   }
 
   if (status === "failed") {
-    return <div>Error: {error.message}</div>; // Affichez le message d'erreur
+    return <div>Error: {error.message}</div>;
   }
 
   if (!user) {

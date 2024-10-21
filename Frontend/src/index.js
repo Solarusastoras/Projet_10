@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import User from "./Pages/User";
+import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import { store } from "./Store/store";
 import { Provider } from "react-redux";
@@ -17,6 +18,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

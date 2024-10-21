@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserProfileUsername } from "../../Store/AuthSlice";
+import { updateUserProfileUsername } from "../../Store/AuthAction.js";
 import useUsername from "../utils/use_username";
 import "./_edituser.scss";
 
@@ -35,7 +35,7 @@ const EditUser = ({ onClose }) => {
 
   return (
     <div>
-      <p>Edit user info</p>
+      <h1>Edit user info</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
