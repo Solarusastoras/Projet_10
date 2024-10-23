@@ -3,6 +3,7 @@ import "./_user.scss";
 import NewUserProfile from "../../Components/UpdateUsername";
 import Account from "../../Components/Account";
 import UserProfile from "../../Components/UserProfile";
+import Header from "../../Components/Header";
 
 function User() {
   const [showUserProfile, setShowUserProfile] = useState(true);
@@ -11,6 +12,7 @@ function User() {
   const [showTransactions, setShowTransactions] = useState(true);
   const [buttonClass, setButtonClass] = useState("transaction-button");
   const [iconClass, setIconClass] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleEditNameClick = () => {
     setShowUserProfile(false);
@@ -19,6 +21,7 @@ function User() {
     setShowTransactions(false); // Hide the "View transactions" button
     setButtonClass("transaction-button transparent-bg"); // Change button background to transparent
     setIconClass("large-icon"); // Change icon size to 7rem
+    setIsEditing(true); // Set editing state to true
   };
 
   const handleCancelClick = () => {
@@ -28,10 +31,12 @@ function User() {
     setShowTransactions(true); // Show the "View transactions" button
     setButtonClass("transaction-button"); // Revert button background
     setIconClass(""); // Revert icon size
+    setIsEditing(false); // Set editing state to false
   };
 
   return (
     <div>
+      <Header isEditing={isEditing} />
       <main className={mainClass}>
         <div className="header">
           {showUserProfile && (
