@@ -1,22 +1,58 @@
+import React, { useState } from "react";
 import "./_user.scss";
 import NewUserProfile from "../../Components/UpdateUsername";
 import Account from "../../Components/Account";
 import UserProfile from "../../Components/UserProfile";
 
 function User() {
+  const [showUserProfile, setShowUserProfile] = useState(true);
+  const [mainClass, setMainClass] = useState("main bg-dark");
+  const [accountClass, setAccountClass] = useState("account");
+  const [showTransactions, setShowTransactions] = useState(true);
+  const [buttonClass, setButtonClass] = useState("transaction-button");
+  const [iconClass, setIconClass] = useState("");
+
+  const handleEditNameClick = () => {
+    setShowUserProfile(false);
+    setMainClass("main bg-white"); // Change the background to white
+    setAccountClass("account dark-bg"); // Change the account background to dark gray
+    setShowTransactions(false); // Hide the "View transactions" button
+    setButtonClass("transaction-button transparent-bg"); // Change button background to transparent
+    setIconClass("large-icon"); // Change icon size to 7rem
+  };
+
+  const handleCancelClick = () => {
+    setShowUserProfile(true);
+    setMainClass("main bg-dark"); // Revert the background to dark
+    setAccountClass("account"); // Revert the account background
+    setShowTransactions(true); // Show the "View transactions" button
+    setButtonClass("transaction-button"); // Revert button background
+    setIconClass(""); // Revert icon size
+  };
+
   return (
-      <div>
-      <main className="main bg-dark">
+    <div>
+      <main className={mainClass}>
         <div className="header">
-          <h1>Welcome back</h1>
-          <UserProfile />
-          <div>
-            <NewUserProfile />
-          </div>
+          {showUserProfile && (
+            <>
+              <h1>Welcome back</h1>
+              <UserProfile />
+            </>
+          )}
+          <NewUserProfile
+            onEditNameClick={handleEditNameClick}
+            onCancelClick={handleCancelClick}
+          />
         </div>
-        <Account />
+        <Account
+          accountClass={accountClass}
+          showTransactions={showTransactions}
+          buttonClass={buttonClass}
+          iconClass={iconClass}
+        />
       </main>
-      </div>
+    </div>
   );
 }
 

@@ -35,12 +35,12 @@ const EditUser = ({ onClose }) => {
 
   return (
     <div>
-      <h1>Edit user info</h1>
+      <h1 className="h1_color">Edit user info</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
           id="username"
-          className="new_username"
+          className="new_username - username_color"
           type="text"
           placeholder="New Username"
           value={newUsername}
@@ -48,7 +48,7 @@ const EditUser = ({ onClose }) => {
           required
         />
         <br />
-        <label htmlFor="firstname">First Name:</label>
+        <label htmlFor="firstname ">First Name:</label>
         <input
           id="firstname"
           className="new_username"

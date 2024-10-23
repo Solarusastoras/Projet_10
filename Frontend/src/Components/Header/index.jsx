@@ -13,7 +13,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate("/");
   };
 
   const isUserPage = location.pathname === "/user";

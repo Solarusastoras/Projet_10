@@ -17,7 +17,7 @@ function Form() {
     dispatch(loginUser({ email: username, password }));
   };
 
-  const Logout = () => {
+  const handleLogout = () => {
     dispatch(logout());
   };
 
@@ -60,8 +60,15 @@ function Form() {
       <button className="sign-in-button" type="submit" disabled={loading}>
         {loading ? "Loading..." : "Sign In"}
       </button>
+      {token && (
+        <>
+          <p className="token">Token: {token}</p>
+          <button type="button" className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </>
+      )}
       {error && <p className="error">{error}</p>}
-      {token && <p className="token">Token: {token}</p>}
     </form>
   );
 }
