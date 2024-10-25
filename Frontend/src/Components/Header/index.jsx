@@ -2,12 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
-import { faGear } from "@fortawesome/free-solid-svg-icons";
-import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { faPowerOff, faGear, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle, faUser } from "@fortawesome/free-regular-svg-icons"; // Import faUser
 import Logo from "../../img/argentBankLogo.png";
 import { logout } from "../../Store/AuthSlice";
 import "./_header.scss";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import Vault from "../../img/vault.png";
+import Setting from "../../img/settings.png";
+
 
 const Header = ({ isEditing }) => {
   const dispatch = useDispatch();
@@ -33,25 +36,23 @@ const Header = ({ isEditing }) => {
           />
         </Link>
       )}
-      <div>
+      <div className="main-nav-items">
         {!isEditing && isUserPage && user ? (
           <>
             <Link to="/user" className="main-nav-item">
-              <FontAwesomeIcon icon={faUserCircle} />
-              {user.userName}
+              <FontAwesomeIcon icon={faUserCircle} className="icon-spacing" />
+              <span className="username-spacing">{user.userName}</span>
             </Link>
-            <button onClick={handleLogout} className="main-nav-item">
-              <i className="fa fa-sign-out"></i>
-              Sign Out
-            </button>
+            <div onClick={handleLogout} className="main-nav-item">
+              <FontAwesomeIcon icon={faSignOutAlt} className="icon-spacing" />
+              <span className="signout-spacing">Sign Out</span>
+            </div>
           </>
         ) : (
           !isEditing && (
             <Link to="/login" className="main-nav-item">
-              <FontAwesomeIcon
-                icon={faUserCircle}
-              />
-               Sign In
+              <FontAwesomeIcon icon={faUserCircle} className="icon-spacing" />
+              <span className="signin-spacing">Sign In</span>
             </Link>
           )
         )}
@@ -59,13 +60,21 @@ const Header = ({ isEditing }) => {
       {isEditing && (
         <div className="edit-header">
           <div className="logo_bank_l">
-            <i className="fa fa-user"></i>
-            <h2>Argent Bank</h2>
+            <img
+              className="main-nav-logo-vault"
+              src={Vault}
+              alt="Icon Vault"
+            />
+            <h2 className="weight_header">Argent Bank</h2>
           </div>
           <div className="user-info">
             <p>{user.userName}</p>
-            <FontAwesomeIcon icon={faUserCircle} size="lg" />
-            <FontAwesomeIcon icon={faGear} size="lg" />
+            <FontAwesomeIcon icon={faUser} className="circle-icon" size="lg" />
+            <img
+            className="main-nav-logo-settings"
+            src={Setting}
+            alt="Setting Logo"
+          />
             <FontAwesomeIcon icon={faPowerOff} size="lg" />
           </div>
         </div>
