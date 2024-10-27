@@ -50,6 +50,7 @@ function User() {
             onCancelClick={handleCancelClick}
           />
         </div>
+        <Account />
       </main>
     </div>
   );

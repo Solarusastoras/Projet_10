@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import TransactionList from "./TransactionList";
-import accountData from "../../Data/account.json"; // Assurez-vous que le fichier existe à cet emplacement
+import accountData from "../../Data/account.json";
 import "./_account.scss";
 
 const Account = () => {
@@ -32,9 +32,9 @@ const Account = () => {
                 />
               </button>
             </div>
-            {openAccountIndex === index && (
+            {openAccountIndex === index && account.transaction && (
               <div className="account-details">
-                <TransactionList transactions={account.transactions} />
+                <TransactionList transactions={account.transaction} />
               </div>
             )}
           </section>
