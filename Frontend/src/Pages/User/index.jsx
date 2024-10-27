@@ -50,12 +50,6 @@ function User() {
             onCancelClick={handleCancelClick}
           />
         </div>
-        <Account
-          accountClass={accountClass}
-          showTransactions={showTransactions}
-          buttonClass={buttonClass}
-          iconClass={iconClass}
-        />
       </main>
     </div>
   );

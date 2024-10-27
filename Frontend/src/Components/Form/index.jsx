@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../Store/AuthAction.js";
-import { logout } from "../../Store/AuthSlice.js"; 
 import "./_form.scss";
 
 function Form() {
@@ -10,24 +9,18 @@ function Form() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, token, loading, error } = useSelector((state) => state.auth);
+  const { token, loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(loginUser({ email: username, password }));
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
-
   useEffect(() => {
     if (token) {
-      console.log("Token:", token);
-      console.log("Username:", username);
       navigate("/user");
     }
-  }, [token, navigate, username]);
+  }, [token, navigate]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -60,14 +53,6 @@ function Form() {
       <button className="sign-in-button" type="submit" disabled={loading}>
         {loading ? "Loading..." : "Sign In"}
       </button>
-      {token && (
-        <>
-          <p className="token">Token: {token}</p>
-          <button type="button" className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
-        </>
-      )}
       {error && <p className="error">{error}</p>}
     </form>
   );

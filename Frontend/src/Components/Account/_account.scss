@@ -1,18 +1,18 @@
-.account.dark-bg {
-  background-color: #333;
-  color: white;
+.account-title {
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .account-details {
   margin-top: 1rem;
 }
 
-.transaction-button.transparent-bg {
-  background-color: transparent;
-  border-color: transparent;
+.account-amount,
+.account-description {
+  margin: 0.5rem 0;
 }
 
-.large-icon {
-  font-size: 4rem;
-  margin-left: 85%;
+.account.editing {
+  background-color: #3d3d3d;
+  color: white;
 }

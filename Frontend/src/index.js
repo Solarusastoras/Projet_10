@@ -9,7 +9,7 @@ import User from "./Pages/User";
 import Footer from "./Components/Footer";
 import { store } from "./Store/store";
 import { Provider } from "react-redux";
-import ProtectedRoute from "../src/Components/utils/Protect_Route";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -23,9 +23,9 @@ root.render(
           <Route
             path="/user"
             element={
-              <ProtectedRoute>
+              
                 <User />
-              </ProtectedRoute>
+             
             }
           />
         </Routes>

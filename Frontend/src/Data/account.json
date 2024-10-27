@@ -1,0 +1,75 @@
+[
+    {
+        "id": "Bank checking",
+        "title": "Argent Bank Checking (x8349)",
+        "amount": "$2,082.79",
+        "description": "Available Balance",
+        "Button": "View transactions",
+        "transaction": [
+            {
+                "id": "1",
+                "date": "27/02/20",
+                "Description": "Golden Sun Bakery",
+                "Amount": "8$",
+                "Balance": "$298",
+                "Transaction type": "Electronic",
+                "Category": "Food",
+                "Note": "lorem ipsum"
+            },
+            {
+                "id": "2",
+                "date": "27/02/20",
+                "Description": "Golden Sun Bakery",
+                "Amount": "8$",
+                "Balance": "$298",
+                "Transaction type": "Electronic",
+                "Category": "Food",
+                "Note": "lorem ipsum"
+            },
+            {
+                "id": "3",
+                "date": "27/02/20",
+                "Description": "Golden Sun Bakery",
+                "Amount": "8$",
+                "Balance": "$298",
+                "Transaction type": "Electronic",
+                "Category": "Food",
+                "Note": "lorem ipsum"
+            },
+            {
+                "id": "4",
+                "date": "27/02/20",
+                "Description": "Golden Sun Bakery",
+                "Amount": "8$",
+                "Balance": "$298",
+                "Transaction type": "Electronic",
+                "Category": "Food",
+                "Note": "lorem ipsum"
+            },
+            {
+                "id": "5",
+                "date": "27/02/20",
+                "Description": "Golden Sun Bakery",
+                "Amount": "8$",
+                "Balance": "$298",
+                "Transaction type": "Electronic",
+                "Category": "Food",
+                "Note": "lorem ipsum"
+            }
+        ]
+    },
+    {
+        "id": "Bank checking",
+        "title": "Argent Bank Savings (x6712)",
+        "amount": "$10,928.42",
+        "description": "Available Balance",
+        "Button": "View transactions"
+    },
+    {
+        "id": "Bank checking",
+        "title": "Argent Bank Credit Card (x8349)",
+        "amount": "$184",
+        "description": "Available Balance",
+        "Button": "View transactions"
+    }
+]
