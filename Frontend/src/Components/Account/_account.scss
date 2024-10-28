@@ -18,21 +18,22 @@
   padding: 1rem;
   border: none;
   border-radius: 5px;
+  width: 70%;
 }
 
 .edit-button {
   margin-left: 10px;
 }
 
-.arrow_right{
+.arrow_right {
   color: white;
   position: absolute;
-  right: 11%;
+  right: 17%;
   margin-top: -30px;
   font-size: 4.5rem;
   display: none;
 }
 
 .account_editing .arrow_right {
-  display: block; 
+  display: block;
 }

@@ -37,10 +37,10 @@ const EditUser = ({ onClose }) => {
     <div>
       <h1 className="h1_color">Edit user info</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">User Name:</label>
         <input
           id="username"
-          className="new_username - username_color"
+          className="new_username username_color"
           type="text"
           placeholder="New Username"
           value={newUsername}
@@ -48,7 +48,7 @@ const EditUser = ({ onClose }) => {
           required
         />
         <br />
-        <label htmlFor="firstname ">First Name:</label>
+        <label htmlFor="firstname">First Name:</label>
         <input
           id="firstname"
           className="new_username"
@@ -68,12 +68,12 @@ const EditUser = ({ onClose }) => {
           disabled
         />
         <br />
-        <button type="submit" className="edit-button - marge_d - edit-buttons">
+        <button type="submit" className="edit-button marge_d edit-buttons">
           Save
         </button>
         <button
           type="button"
-          className="edit-button - edit-buttons"
+          className="edit-button edit-buttons"
           onClick={onClose}
         >
           Cancel

@@ -22,7 +22,9 @@ const NewUserProfile = ({ onEditNameClick, onCancelClick }) => {
       {user && (
         <>
           {!isEditing ? (
-            <button className="button_editname_color" onClick={handleOpenEdit}>Edit Name</button>
+            <button className="button_editname_color" onClick={handleOpenEdit}>
+              Edit Name
+            </button>
           ) : (
             <EditUser onClose={handleCloseEdit} />
           )}

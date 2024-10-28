@@ -2,12 +2,14 @@
   margin-bottom: 20px;
   font-size: 1rem;
   color: grey;
+  width: 9%;
+  padding: 2px;
 }
 
 .h1_color,
 .username_color {
   color: black;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .error {
@@ -26,6 +28,6 @@ label {
 }
 
 .edit-buttons {
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
