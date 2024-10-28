@@ -12,7 +12,9 @@ const TransactionList = ({ transactions }) => {
         <li key={transaction.id} className="transaction-item">
           <div className="transaction-summary">
             <span className="transaction-date">{transaction.date}</span>
-            <span className="transaction-description">{transaction.Description}</span>
+            <span className="transaction-description">
+              {transaction.Description}
+            </span>
             <span className="transaction-amount">{transaction.Amount}</span>
             <span className="transaction-balance">{transaction.Balance}</span>
           </div>

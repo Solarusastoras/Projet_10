@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import TransactionList from "./TransactionList";
 import accountData from "../../Data/account.json";
 import "./_account.scss";
 
-const Account = () => {
+const Account = ({ isEditing }) => {
   const [openAccountIndex, setOpenAccountIndex] = useState(null);
 
   const toggle = (index) => {
@@ -17,20 +17,37 @@ const Account = () => {
       <h2 className="sr-only">Accounts</h2>
       {accountData && accountData.length > 0 ? (
         accountData.map((account, index) => (
-          <section key={index} className="account">
+          <section
+            key={index}
+            className={`account ${isEditing ? "account_editing" : ""}`}
+          >
             <div className="account-content-wrapper">
               <h3 className="account-title">{account.title}</h3>
               <p className="account-amount">{account.amount}</p>
-              <p className="account-amount-description">{account.description}</p>
+              <h3 className="account-amount-description">
+                {account.description}
+              </h3>
             </div>
             <div className="account-content-wrapper cta">
-              <button className="transaction-button" onClick={() => toggle(index)}>
-                {openAccountIndex === index ? "Hide Transactions" : "View Transactions"}
+              {isEditing ? (
                 <FontAwesomeIcon
-                  icon={openAccountIndex === index ? faChevronUp : faChevronDown}
-                  className="fleche_up"
+                  icon={openAccountIndex === index ? faTimes : faChevronRight}
+                  className="arrow_right"
                 />
-              </button>
+              ) : (
+                <button
+                  className="transaction-button"
+                  onClick={() => toggle(index)}
+                >
+                  {openAccountIndex === index
+                    ? "Hide Transactions"
+                    : "View Transactions"}
+                  <FontAwesomeIcon
+                    icon={openAccountIndex === index ? faTimes : faChevronRight}
+                    className="arrow_right"
+                  />
+                </button>
+              )}
             </div>
             {openAccountIndex === index && account.transaction && (
               <div className="account-details">

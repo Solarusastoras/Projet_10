@@ -1,28 +1,21 @@
 import React, { useState } from "react";
-import NewUserProfile from "../UpdateUsername";
-import Account from "../Account";
-import Header from "../Header";
+import Account from "./Account";
+import "./_parentComponent.scss";
 
 const ParentComponent = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditNameClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleCancelClick = () => {
-    setIsEditing(false);
+    setIsEditing(!isEditing);
   };
 
   return (
-    <>
-      <Header isEditing={isEditing} />
-      <NewUserProfile
-        onEditNameClick={handleEditNameClick}
-        onCancelClick={handleCancelClick}
-      />
-      <Account />
-    </>
+    <div>
+      <button className="edit-button" onClick={handleEditNameClick}>
+        Edit Name
+      </button>
+      <Account isEditing={isEditing} />
+    </div>
   );
 };
 

@@ -50,7 +50,7 @@ function User() {
             onCancelClick={handleCancelClick}
           />
         </div>
-        <Account />
+        <Account isEditing={isEditing} />
       </main>
     </div>
   );
