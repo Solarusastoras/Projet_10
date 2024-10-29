@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiCall } from "./Api";
 import { LOGIN_URL, PROFILE_URL } from "./ConfigApi.js";
+import { logout } from './AuthSlice';
 
 // Action asynchrone pour connecter un utilisateur
 export const loginUser = createAsyncThunk(
@@ -83,4 +84,11 @@ export const updateUserProfileUsername = createAsyncThunk(
       return rejectWithValue(error.response?.data || error.message);
     }
   }
+  
 );
+
+
+export const logoutUser = createAsyncThunk('auth/logoutUser', async (_, { dispatch }) => {
+  dispatch(logout());
+});
+

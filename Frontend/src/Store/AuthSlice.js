@@ -1,14 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, fetchUserProfile, updateUserProfileUsername } from './AuthAction.js';
-import { handlePending, handleRejected } from './AsyncHandler.js';
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  loginUser,
+  fetchUserProfile,
+  updateUserProfileUsername,
+} from "./AuthAction.js";
+import { handlePending, handleRejected } from "./AsyncHandler.js";
 
 // Création d'un slice Redux pour gérer l'état d'authentification
 const authSlice = createSlice({
-  name: 'auth', // Nom du slice
+  name: "auth", // Nom du slice
   initialState: {
     user: null, // Informations de l'utilisateur
     token: null, // Token d'authentification
-    status: 'idle', // Statut de la requête (idle, pending, succeeded, failed)
+    status: "idle", // Statut de la requête (idle, pending, succeeded, failed)
     error: null, // Message d'erreur
     firstName: null, // Prénom de l'utilisateur
     lastName: null, // Nom de famille de l'utilisateur
@@ -30,7 +34,7 @@ const authSlice = createSlice({
       .addCase(loginUser.pending, (state) => handlePending(state))
       // Gestion de l'état lorsque la requête de connexion réussit
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.user = action.payload.userProfile;
         state.token = action.payload.token;
         state.firstName = action.payload.userProfile.firstName;
@@ -38,29 +42,37 @@ const authSlice = createSlice({
         state.userName = action.payload.userProfile.userName;
       })
       // Gestion de l'état lorsque la requête de connexion échoue
-      .addCase(loginUser.rejected, (state, action) => handleRejected(state, action))
+      .addCase(loginUser.rejected, (state, action) =>
+        handleRejected(state, action)
+      )
       // Gestion de l'état pendant la requête de récupération du profil utilisateur
       .addCase(fetchUserProfile.pending, (state) => handlePending(state))
       // Gestion de l'état lorsque la requête de récupération du profil utilisateur réussit
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.user = action.payload;
         state.firstName = action.payload.firstName;
         state.lastName = action.payload.lastName;
         state.userName = action.payload.userName;
       })
       // Gestion de l'état lorsque la requête de récupération du profil utilisateur échoue
-      .addCase(fetchUserProfile.rejected, (state, action) => handleRejected(state, action))
+      .addCase(fetchUserProfile.rejected, (state, action) =>
+        handleRejected(state, action)
+      )
       // Gestion de l'état pendant la requête de mise à jour du nom d'utilisateur
-      .addCase(updateUserProfileUsername.pending, (state) => handlePending(state))
+      .addCase(updateUserProfileUsername.pending, (state) =>
+        handlePending(state)
+      )
       // Gestion de l'état lorsque la requête de mise à jour du nom d'utilisateur réussit
       .addCase(updateUserProfileUsername.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.user.userName = action.payload.userName;
         state.userName = action.payload.userName;
       })
       // Gestion de l'état lorsque la requête de mise à jour du nom d'utilisateur échoue
-      .addCase(updateUserProfileUsername.rejected, (state, action) => handleRejected(state, action));
+      .addCase(updateUserProfileUsername.rejected, (state, action) =>
+        handleRejected(state, action)
+      );
   },
 });
 

@@ -14,7 +14,6 @@ import Setting from "../../img/settings.webp";
 const Header = ({ isEditing }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
   const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
