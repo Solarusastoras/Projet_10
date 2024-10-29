@@ -17,11 +17,16 @@ const Account = ({ isEditing }) => {
       <h2 className="sr-only">Accounts</h2>
       {accountData && accountData.length > 0 ? (
         accountData.map((account, index) => (
-          <section key={index} className={`account ${isEditing ? "account_editing" : ""}`}>
+          <section
+            key={index}
+            className={`account ${isEditing ? "account_editing" : ""}`}
+          >
             <div className="account-content-wrapper">
               <h3 className="account-title">{account.title}</h3>
               <p className="account-amount">{account.amount}</p>
-              <p className="account-amount-description">{account.description}</p>
+              <p className="account-amount-description">
+                {account.description}
+              </p>
             </div>
             <div className="account-content-wrapper cta">
               {isEditing ? (
@@ -31,8 +36,13 @@ const Account = ({ isEditing }) => {
                   onClick={() => toggle(index)} // Ajout du gestionnaire d'événements onClick
                 />
               ) : (
-                <button className="transaction-button" onClick={() => toggle(index)}>
-                  {openAccountIndex === index ? "Hide Transactions" : "View Transactions"}
+                <button
+                  className="transaction-button"
+                  onClick={() => toggle(index)}
+                >
+                  {openAccountIndex === index
+                    ? "Hide Transactions"
+                    : "View Transactions"}
                   <FontAwesomeIcon
                     icon={openAccountIndex === index ? faTimes : faChevronRight}
                     className="arrow_right"

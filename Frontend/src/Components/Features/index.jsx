@@ -1,7 +1,7 @@
 import "./_features.scss";
-import chatIcon from "../../img/icon-chat.png";
-import moneyIcon from "../../img/icon-money.png";
-import securityIcon from "../../img/icon-security.png";
+import chatIcon from "../../img/icon-chat.webp";
+import moneyIcon from "../../img/icon-money.webp";
+import securityIcon from "../../img/icon-security.webp";
 
 function Features() {
   return (

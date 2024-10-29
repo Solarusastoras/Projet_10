@@ -4,12 +4,12 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle, faUser } from "@fortawesome/free-regular-svg-icons"; // Import faUser
-import Logo from "../../img/argentBankLogo.png";
+import Logo from "../../img/argentBankLogo.webp";
 import { logout } from "../../Store/AuthSlice";
 import "./_header.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Vault from "../../img/vault.png";
-import Setting from "../../img/settings.png";
+import Vault from "../../img/vault.webp";
+import Setting from "../../img/settings.webp";
 
 const Header = ({ isEditing }) => {
   const dispatch = useDispatch();
