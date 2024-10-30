@@ -33,3 +33,23 @@
 .account_editing .arrow_right {
   display: block;
 }
+
+// Mobile
+@media (min-width: 320px) and (max-width: 767.99px) {
+  .account_editing {
+    width: 80%;
+  }
+  .account-amount {
+    font-size: 1.7rem;
+  }
+
+  .account-amount-description,
+  .account-title {
+    font-size: 1rem;
+  }
+
+  .arrow_right {
+    font-size: 3rem;
+    margin-top: -68px;
+  }
+}
