@@ -6,13 +6,14 @@ const ParentComponent = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditNameClick = () => {
-    setIsEditing(!isEditing);
+    setIsEditing((prev) => !prev); // Utilisation de la fonction de mise à jour
   };
 
   return (
     <div>
       <button className="edit-button" onClick={handleEditNameClick}>
-        Edit Name
+        {isEditing ? "Cancel" : "Edit Name"}{" "}
+        {/* Changement de texte dynamique */}
       </button>
       <Account isEditing={isEditing} />
     </div>

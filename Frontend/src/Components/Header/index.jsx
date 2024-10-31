@@ -1,17 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import Logo from "../../img/argentBankLogo.webp";
 import { logout } from "../../Store/AuthSlice";
 import "./_header.scss";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import Vault from "../../img/vault.webp";
 import Setting from "../../img/settings.webp";
 import Userlogin from "../../img/user.webp";
-import "../../Pages/Login/";
 
 const Header = ({ isEditing }) => {
   const dispatch = useDispatch();
@@ -23,7 +21,6 @@ const Header = ({ isEditing }) => {
     navigate("/");
   };
 
-  // Lors du clique du boutton Edit Name
   if (isEditing) {
     return (
       <div className="edit-header">
@@ -35,17 +32,22 @@ const Header = ({ isEditing }) => {
           <p>{user.userName}</p>
           <FontAwesomeIcon icon={faUser} className="circle-icon" size="lg" />
           <img
-            className="main-nav-logo-settings"
+            className="main-nav-logo-settings icon-spacing" // Ajout de la classe ici
             src={Setting}
             alt="Setting Logo"
           />
-          <FontAwesomeIcon icon={faPowerOff} size="lg" />
+          <FontAwesomeIcon
+            icon={faPowerOff}
+            className="icon-spacing"
+            size="lg"
+            onClick={handleLogout}
+          />{" "}
+          {/* Ajout de la classe ici */}
         </div>
       </div>
     );
   }
 
-  // Header par defaut
   return (
     <nav className="main-nav">
       <Link to="/" className="main-nav-logo">
@@ -59,7 +61,7 @@ const Header = ({ isEditing }) => {
         {user ? (
           <>
             <Link to="/user" className="main-nav-item">
-              <div className="circle_user_login_bk - icon-spacing">
+              <div className="circle_user_login_bk icon-spacing">
                 <img
                   className="user_icon_login"
                   src={Userlogin}
@@ -79,7 +81,7 @@ const Header = ({ isEditing }) => {
           </>
         ) : (
           <Link to="/login" className="main-nav-item">
-            <div className="circle_user_login_bk - icon-spacing">
+            <div className="circle_user_login_bk icon-spacing">
               <img
                 className="user_icon_login"
                 src={Userlogin}

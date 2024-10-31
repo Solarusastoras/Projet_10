@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const useTimeouts = () => {
   const [logoutTimeoutId, setLogoutTimeoutId] = useState(null);
-  const [sessionTimeoutId, setSessionTimeoutId] = useState(null);
   const dispatch = useDispatch();
 
   const resetTimeouts = () => {
@@ -19,28 +18,16 @@ const useTimeouts = () => {
     setLogoutTimeoutId(newLogoutTimeoutId);
   };
 
-  const startSessionTimeout = () => {
-    if (sessionTimeoutId) {
-      clearTimeout(sessionTimeoutId);
-    }
-
-    const newSessionTimeoutId = setTimeout(() => {
-      dispatch(logoutUser());
-    }, 30 * 60 * 1000); // 30 minutes
-
-    setSessionTimeoutId(newSessionTimeoutId);
-  };
-
   useEffect(() => {
-    startSessionTimeout();
+    resetTimeouts(); // Appel initial pour démarrer le timeout
     return () => {
-      if (sessionTimeoutId) {
-        clearTimeout(sessionTimeoutId);
+      if (logoutTimeoutId) {
+        clearTimeout(logoutTimeoutId);
       }
     };
-  }, []);
+  }, [logoutTimeoutId, dispatch]); // Ajout de logoutTimeoutId et dispatch comme dépendances
 
-  return { resetTimeouts, startSessionTimeout };
+  return { resetTimeouts };
 };
 
 export default useTimeouts;
