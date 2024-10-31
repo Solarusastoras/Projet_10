@@ -15,11 +15,20 @@ main {
     background-color: #12002b;
 }
 
-.fa {
-    display: inline-block;
-    font: normal normal normal 14px / 1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
+.circle_user_login_bk {
+    background-color: #2e4052;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_icon_login {
+    width: 14px;
+    height: 14px;
 }
 
 .sign-in-content {

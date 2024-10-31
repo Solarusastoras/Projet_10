@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { faUserCircle, faUser } from "@fortawesome/free-regular-svg-icons"; // Import faUser
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 import Logo from "../../img/argentBankLogo.webp";
 import { logout } from "../../Store/AuthSlice";
 import "./_header.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Vault from "../../img/vault.webp";
 import Setting from "../../img/settings.webp";
+import Userlogin from "../../img/user.webp";
+import "../../Pages/Login/";
 
 const Header = ({ isEditing }) => {
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const Header = ({ isEditing }) => {
     navigate("/");
   };
 
+  // Lors du clique du boutton Edit Name
   if (isEditing) {
     return (
       <div className="edit-header">
@@ -42,6 +45,7 @@ const Header = ({ isEditing }) => {
     );
   }
 
+  // Header par defaut
   return (
     <nav className="main-nav">
       <Link to="/" className="main-nav-logo">
@@ -55,7 +59,17 @@ const Header = ({ isEditing }) => {
         {user ? (
           <>
             <Link to="/user" className="main-nav-item">
-              <FontAwesomeIcon icon={faUserCircle} className="icon-spacing" />
+              <div className="circle_user_login_bk - icon-spacing">
+                <img
+                  className="user_icon_login"
+                  src={Userlogin}
+                  alt="User Logo"
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(188deg) brightness(119%) contrast(119%)",
+                  }}
+                />
+              </div>
               <span className="username-spacing">{user.userName}</span>
             </Link>
             <div onClick={handleLogout} className="main-nav-item">
@@ -65,7 +79,17 @@ const Header = ({ isEditing }) => {
           </>
         ) : (
           <Link to="/login" className="main-nav-item">
-            <FontAwesomeIcon icon={faUserCircle} className="icon-spacing" />
+            <div className="circle_user_login_bk - icon-spacing">
+              <img
+                className="user_icon_login"
+                src={Userlogin}
+                alt="User Logo"
+                style={{
+                  filter:
+                    "brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(188deg) brightness(119%) contrast(119%)",
+                }}
+              />
+            </div>
             <span className="signin-spacing">Sign In</span>
           </Link>
         )}
