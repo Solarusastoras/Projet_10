@@ -1,4 +1,4 @@
-import React, { useState } from "react"; // Ajout du useState
+import React, { useState } from "react";
 import "./_transactionList.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +19,7 @@ const TransactionList = ({ transactions, isEditing }) => {
 
   return (
     <div className={`transaction-container ${isEditing ? "editing" : ""}`}>
-      <div className={`transaction-header ${isEditing ? "editing" : ""}`}>
+      <div className="transaction-header">
         <p className="marge_r_date">Date</p>
         <p className="marge_r_description">Description</p>
         <p className="marge_r_amount">Amount</p>
@@ -28,7 +28,9 @@ const TransactionList = ({ transactions, isEditing }) => {
       <ul>
         {transactions.map((transaction) => (
           <li key={transaction.id} className="transaction-item">
-            <div className="transaction-summary">
+            <div
+              className={`transaction-summary ${isEditing ? "editing" : ""}`}
+            >
               <p className="transaction-date">{transaction.date}</p>
               <p className="transaction-description">
                 {transaction.Description}
@@ -48,7 +50,10 @@ const TransactionList = ({ transactions, isEditing }) => {
               </div>
             </div>
             {selectedTransaction === transaction.id && (
-              <TransactionDetails transaction={transaction} />
+              <TransactionDetails
+                transaction={transaction}
+                isEditing={isEditing} // Ajout de la prop isEditing
+              />
             )}
           </li>
         ))}

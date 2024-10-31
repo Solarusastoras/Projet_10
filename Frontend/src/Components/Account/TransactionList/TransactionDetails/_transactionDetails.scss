@@ -7,6 +7,11 @@
     padding: 15px;
     width: 77%;
     margin: -15px auto 15px auto;
+
+    // Mode editing
+    &.editing {
+        width: 68%; // Réduit la largeur en mode editing
+    }
 }
 
 .transaction_detail_row {

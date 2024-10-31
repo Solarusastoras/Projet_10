@@ -3,9 +3,10 @@ import "./_transactionDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
-const TransactionDetails = ({ transaction }) => {
+const TransactionDetails = ({ transaction, isEditing }) => {
+  // Ajout de isEditing
   return (
-    <div className="transaction-details">
+    <div className={`transaction-details ${isEditing ? "editing" : ""}`}>
       <div className="transaction_detail_row">
         <p>Transaction type:</p>
         <p className="marge_r_type">{transaction["Transaction type"]}</p>
@@ -14,8 +15,7 @@ const TransactionDetails = ({ transaction }) => {
       <div className="transaction_detail_row">
         <p>Category:</p>
         <p className="marge_r_category">
-          {" "}
-          {transaction.Category}{" "}
+          {transaction.Category}
           <FontAwesomeIcon icon={faPencil} className="edit-icon_pencil" />
         </p>
       </div>
@@ -23,7 +23,7 @@ const TransactionDetails = ({ transaction }) => {
       <div className="transaction_detail_row">
         <p>Note:</p>
         <p className="marge_r_note">
-          {transaction.Note}{" "}
+          {transaction.Note}
           <FontAwesomeIcon icon={faPencil} className="edit-icon_pencil" />
         </p>
       </div>

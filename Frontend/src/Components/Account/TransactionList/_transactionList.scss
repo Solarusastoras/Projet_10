@@ -99,14 +99,13 @@ ul {
 }
 
 // Styles pour le mode editing
-.transaction-header.editing {
-  color: black;
-}
+.transaction-container.editing {
+  .transaction-summary {
+    width: 68%;
+  }
 
-.transaction-summary.editing {
-  width: 55%;
-}
-
-.transaction-header.editing {
-  width: 65%;
+  .transaction-header {
+    width: 68%;
+    color: black;
+  }
 }
