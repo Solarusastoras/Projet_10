@@ -1,0 +1,42 @@
+.transaction-details {
+    background-color: #00bc77;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    width: 77%;
+    margin: -15px auto 15px auto;
+}
+
+.transaction_detail_row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    position: relative;
+    width: 100%;
+
+    p {
+        margin: 0;
+        &:first-child {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    }
+}
+
+// Positionnement des valeurs
+.marge_r_type,
+.marge_r_category,
+.marge_r_note {
+    position: absolute;
+    left: 17.5%;
+}
+
+.edit-icon_pencil {
+    color: white;
+    font-size: 0.8rem; // Taille réduite
+    margin-left: 8px;
+}
+
+// mode editing

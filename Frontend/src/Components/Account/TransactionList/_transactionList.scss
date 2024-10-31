@@ -1,21 +1,112 @@
 .transaction-summary {
+  position: relative;
   background-color: #00bc77;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
   border-radius: 5px;
   margin-bottom: 10px;
-  padding: 20px;
-  width: 45rem;
+  padding: 15px;
+  width: 77%;
+  margin: 0 auto 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transaction-header {
+  position: relative;
+  color: white;
+  width: 77%;
+  margin: 0 auto;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
 }
 
 ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+// En-têtes
+.marge_r_date {
+  position: absolute;
+  left: 2%;
+}
+
+.marge_r_description {
+  position: absolute;
+  left: 19%;
+}
+
+.marge_r_amount {
+  position: absolute;
+  right: 33%;
+}
+
+.marge_r_balance {
+  position: absolute;
+  right: 13%;
+}
+
+.marge_r_amount,
+.marge_r_balance,
+.marge_r_date,
+.marge_r_description {
+  margin-top: -15px;
+}
+
+// Transaction description
+
+.transaction-date {
+  position: absolute;
+  left: 2%;
+  margin-top: -12px;
+}
+.transaction-description {
+  position: absolute;
+  left: 18%;
+}
+
+.transaction-amount {
+  position: absolute;
+  right: 35%;
+}
+
+.transaction-balance {
+  position: absolute;
+  right: 15%;
 }
 
 .transaction-date,
 .transaction-description,
-.transaction-amount {
-  margin: 10%;
+.transaction-amount,
+.transaction-balance {
+  margin-top: 12px;
+}
+
+// Chevron icon
+
+.chevron-icon {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 125%; // Ajusté pour être à droite de la valeur balance
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2%;
+}
+
+// Styles pour le mode editing
+.transaction-header.editing {
+  color: black;
+}
+
+.transaction-summary.editing {
+  width: 55%;
+}
+
+.transaction-header.editing {
+  width: 65%;
 }

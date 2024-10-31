@@ -8,55 +8,62 @@ import "./_account.scss";
 const Account = ({ isEditing }) => {
   const [openAccountIndex, setOpenAccountIndex] = useState(null);
 
-  const toggle = (index) => {
+  const toggle = React.useCallback((index) => {
     setOpenAccountIndex(openAccountIndex === index ? null : index);
-  };
+  }, [openAccountIndex]);
 
   return (
-    <div>
+    <div className="accounts-container">
       <h2 className="sr-only">Accounts</h2>
       {accountData && accountData.length > 0 ? (
-        accountData.map((account, index) => (
-          <section
-            key={index}
-            className={`account ${isEditing ? "account_editing" : ""}`}
-          >
-            <div className="account-content-wrapper">
-              <h3 className="account-title">{account.title}</h3>
-              <p className="account-amount">{account.amount}</p>
-              <h3 className="account-amount-description">
-                {account.description}
-              </h3>
-            </div>
-            <div className="account-content-wrapper cta">
-              {isEditing ? (
-                <FontAwesomeIcon
-                  icon={openAccountIndex === index ? faTimes : faChevronRight}
-                  className="arrow_right"
-                  onClick={() => toggle(index)} // Ajout du gestionnaire d'événements onClick
-                />
-              ) : (
-                <button
-                  className="transaction-button"
-                  onClick={() => toggle(index)}
-                >
-                  {openAccountIndex === index
-                    ? "Hide Transactions"
-                    : "View Transactions"}
-                  <FontAwesomeIcon
-                    icon={openAccountIndex === index ? faTimes : faChevronRight}
-                    className="arrow_right"
-                  />
-                </button>
+        <>
+          {accountData.map((account, index) => (
+            <React.Fragment key={index}>
+              <section className={`account ${isEditing ? "account_editing" : ""}`}>
+                <div className="account-content-wrapper">
+                  <h3 className="account-title">{account.title}</h3>
+                  <p className="account-amount">{account.amount}</p>
+                  <h3 className="account-amount-description">
+                    {account.description}
+                  </h3>
+                </div>
+                <div className="account-content-wrapper cta">
+                  {isEditing ? (
+                    <FontAwesomeIcon
+                      icon={openAccountIndex === index ? faTimes : faChevronRight}
+                      className="arrow_right"
+                      onClick={() => toggle(index)}
+                      aria-label={openAccountIndex === index ? "Masquer les transactions" : "Voir les transactions"}
+                    />
+                  ) : (
+                    <button
+                      className="transaction-button"
+                      onClick={() => toggle(index)}
+                      aria-expanded={openAccountIndex === index}
+                      aria-label={openAccountIndex === index ? "Masquer les transactions" : "Voir les transactions"}
+                    >
+                      {openAccountIndex === index
+                        ? "Hide Transactions"
+                        : "View Transactions"}
+                      <FontAwesomeIcon
+                        icon={openAccountIndex === index ? faTimes : faChevronRight}
+                        className="arrow_right"
+                      />
+                    </button>
+                  )}
+                </div>
+              </section>
+              {openAccountIndex === index && account.transaction && (
+                <section className="transactions-section">
+                 <TransactionList 
+      transactions={account.transaction} 
+      isEditing={isEditing} 
+    />
+                </section>
               )}
-            </div>
-            {openAccountIndex === index && account.transaction && (
-              <div className="account-details">
-                <TransactionList transactions={account.transaction} />
-              </div>
-            )}
-          </section>
-        ))
+            </React.Fragment>
+          ))}
+        </>
       ) : (
         <p>No accounts available</p>
       )}
