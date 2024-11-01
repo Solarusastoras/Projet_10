@@ -3,6 +3,7 @@ import "./_transactionList.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import TransactionDetails from "./TransactionDetails";
+import "../../../assets/SASS/_mixins.scss";
 
 const TransactionList = ({ transactions, isEditing }) => {
   const [selectedTransaction, setSelectedTransaction] = useState(null);
@@ -52,7 +53,8 @@ const TransactionList = ({ transactions, isEditing }) => {
             {selectedTransaction === transaction.id && (
               <TransactionDetails
                 transaction={transaction}
-                isEditing={isEditing} // Ajout de la prop isEditing
+                isEditing={isEditing}
+                className="slide-bottom"
               />
             )}
           </li>

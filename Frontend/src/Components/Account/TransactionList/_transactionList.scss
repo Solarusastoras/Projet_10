@@ -13,6 +13,11 @@
   justify-content: space-between;
 }
 
+.slide-bottom {
+  -webkit-animation: slide-bottom 0.6s ease-in-out both;
+  animation: slide-bottom 0.6s ease-in-out both;
+}
+
 .transaction-header {
   position: relative;
   color: white;
