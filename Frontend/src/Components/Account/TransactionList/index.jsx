@@ -1,23 +1,11 @@
 import React, { useState } from "react";
 import "./_transactionList.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import TransactionDetails from "./TransactionDetails";
 import "../../../assets/SASS/_mixins.scss";
 
 const TransactionList = ({ transactions, isEditing }) => {
-  const [selectedTransaction, setSelectedTransaction] = useState(null);
-
-  const toggleDetails = (transactionId) => {
-    setSelectedTransaction(
-      selectedTransaction === transactionId ? null : transactionId
-    );
-  };
-
-  if (!transactions || transactions.length === 0) {
-    return <p>No transactions available</p>;
-  }
-
   return (
     <div className={`transaction-container ${isEditing ? "editing" : ""}`}>
       <div className="transaction-header">
@@ -28,39 +16,46 @@ const TransactionList = ({ transactions, isEditing }) => {
       </div>
       <ul>
         {transactions.map((transaction) => (
-          <li key={transaction.id} className="transaction-item">
-            <div
-              className={`transaction-summary ${isEditing ? "editing" : ""}`}
-            >
-              <p className="transaction-date">{transaction.date}</p>
-              <p className="transaction-description">
-                {transaction.Description}
-              </p>
-              <p className="transaction-amount">{transaction.Amount}</p>
-              <p className="transaction-balance">{transaction.Balance}</p>
-              <div
-                onClick={() => toggleDetails(transaction.id)}
-                aria-expanded={selectedTransaction === transaction.id}
-              >
-                <FontAwesomeIcon
-                  icon={faChevronDown}
-                  className={`chevron-icon ${
-                    selectedTransaction === transaction.id ? "rotated" : ""
-                  }`}
-                />
-              </div>
-            </div>
-            {selectedTransaction === transaction.id && (
-              <TransactionDetails
-                transaction={transaction}
-                isEditing={isEditing}
-                className="slide-bottom"
-              />
-            )}
-          </li>
+          <TransactionItem
+            key={transaction.id}
+            transaction={transaction}
+            isEditing={isEditing}
+          />
         ))}
       </ul>
     </div>
+  );
+};
+
+const TransactionItem = ({ transaction, isEditing }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDetails = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <li className="transaction-item">
+      <div className={`transaction-summary ${isEditing ? "editing" : ""}`}>
+        <p className="transaction-date">{transaction.date}</p>
+        <p className="transaction-description">{transaction.Description}</p>
+        <p className="transaction-amount">{transaction.Amount}</p>
+        <p className="transaction-balance">{transaction.Balance}</p>
+        <div onClick={toggleDetails} aria-expanded={isOpen}>
+          <FontAwesomeIcon
+            icon={isOpen ? faTimes : faChevronDown}
+            className={`chevron-icon ${isOpen ? "rotated" : ""}`}
+          />
+        </div>
+      </div>
+      {isOpen && (
+        <TransactionDetails
+          transaction={transaction}
+          isEditing={isEditing}
+          className="slide-bottom"
+        />
+      )}
+    </li>
   );
 };
 
