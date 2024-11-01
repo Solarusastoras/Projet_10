@@ -10,7 +10,7 @@ const Login = () => {
       <Header />
       <main className="main bg-dark">
         <section className="sign-in-content">
-          <div className="circle_user_login_bk">
+          <div className="circle_user_login_bk marge_r_userlogin">
             <img
               className="user_icon_login"
               src={Userlogin}

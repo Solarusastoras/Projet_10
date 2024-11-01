@@ -10,7 +10,7 @@
 
     // Mode editing
     &.editing {
-        width: 68%; // Réduit la largeur en mode editing
+        width: 68%;
     }
 }
 
@@ -44,4 +44,25 @@
     margin-left: 8px;
 }
 
-// mode editing
+// Tablette
+@media (min-width: 768px) and (max-width: 1023.99px) {
+    .marge_r_type,
+    .marge_r_category,
+    .marge_r_note {
+        left: 25%;
+    }
+}
+
+// Mobile
+@media (min-width: 375px) and (max-width: 767.99px) {
+    .transaction-details {
+        width: 75%;
+        font-size: 0.7rem;
+    }
+
+    .marge_r_type,
+    .marge_r_category,
+    .marge_r_note {
+        left: 37%;
+    }
+}

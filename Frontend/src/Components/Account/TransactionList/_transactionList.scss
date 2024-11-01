@@ -92,7 +92,7 @@ ul {
   position: absolute;
   color: white;
   font-size: 1.5rem;
-  margin-left: 125%; // Ajusté pour être à droite de la valeur balance
+  margin-left: 125%;
   top: 50%;
   transform: translateY(-50%);
   right: 2%;
@@ -107,5 +107,38 @@ ul {
   .transaction-header {
     width: 68%;
     color: black;
+  }
+}
+
+// Tablette
+@media (min-width: 768px) and (max-width: 1023.99px) {
+  .marge_r_amount {
+    right: 30%;
+  }
+
+  .marge_r_balance {
+    right: 11%;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767.99px) {
+  .transaction-summary {
+    width: 75%;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .transaction-header {
+    width: 75%;
+    font-size: 0.7rem;
+  }
+
+  .marge_r_amount {
+    right: 30%;
+  }
+
+  .marge_r_balance {
+    right: 10%;
   }
 }

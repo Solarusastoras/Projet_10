@@ -32,7 +32,7 @@ const Header = ({ isEditing }) => {
           <p>{user.userName}</p>
           <FontAwesomeIcon icon={faUser} className="circle-icon" size="lg" />
           <img
-            className="main-nav-logo-settings icon-spacing" // Ajout de la classe ici
+            className="main-nav-logo-settings icon-spacing"
             src={Setting}
             alt="Setting Logo"
           />
@@ -41,8 +41,7 @@ const Header = ({ isEditing }) => {
             className="icon-spacing"
             size="lg"
             onClick={handleLogout}
-          />{" "}
-          {/* Ajout de la classe ici */}
+          />
         </div>
       </div>
     );
@@ -61,7 +60,7 @@ const Header = ({ isEditing }) => {
         {user ? (
           <>
             <Link to="/user" className="main-nav-item">
-              <div className="circle_user_login_bk icon-spacing">
+              <div className="circle_user_login_bk">
                 <img
                   className="user_icon_login"
                   src={Userlogin}
@@ -72,7 +71,7 @@ const Header = ({ isEditing }) => {
                   }}
                 />
               </div>
-              <span className="username-spacing">{user.userName}</span>
+              <div className="username-spacing">{user.userName}</div>
             </Link>
             <div onClick={handleLogout} className="main-nav-item">
               <FontAwesomeIcon icon={faSignOutAlt} className="icon-spacing" />

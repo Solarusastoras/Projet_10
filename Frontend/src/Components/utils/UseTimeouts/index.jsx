@@ -1,31 +1,22 @@
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../../../Store/AuthAction";
-import { useState, useEffect } from "react";
+import { logoutUser } from "../../../Store/AuthAction.js";
+import { useState, useCallback } from "react";
 
 const useTimeouts = () => {
   const [logoutTimeoutId, setLogoutTimeoutId] = useState(null);
   const dispatch = useDispatch();
 
-  const resetTimeouts = () => {
+  const resetTimeouts = useCallback(() => {
     if (logoutTimeoutId) {
       clearTimeout(logoutTimeoutId);
     }
 
     const newLogoutTimeoutId = setTimeout(() => {
       dispatch(logoutUser());
-    }, 3 * 60 * 1000); // 3 minutes
+    }, 35 * 60 * 1000); // 5 minutes
 
     setLogoutTimeoutId(newLogoutTimeoutId);
-  };
-
-  useEffect(() => {
-    resetTimeouts(); // Appel initial pour démarrer le timeout
-    return () => {
-      if (logoutTimeoutId) {
-        clearTimeout(logoutTimeoutId);
-      }
-    };
-  }, [logoutTimeoutId, dispatch]); // Ajout de logoutTimeoutId et dispatch comme dépendances
+  }, [logoutTimeoutId, dispatch]);
 
   return { resetTimeouts };
 };

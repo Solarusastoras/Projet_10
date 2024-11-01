@@ -20,10 +20,14 @@ main {
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    margin: 0 auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.marge_r_userlogin {
+    margin: 0 auto;
 }
 
 .user_icon_login {

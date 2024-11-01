@@ -17,7 +17,6 @@
 .main-nav-items {
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
 .main-nav-item {
@@ -41,13 +40,13 @@
     width: 200px;
 }
 
-.fa-user-circle {
-    margin-right: 5px;
-}
-
 .header {
     color: #fff;
     margin-bottom: 2rem;
+}
+
+.username-spacing {
+    margin-left: 2%;
 }
 
 // Edit mode
@@ -69,6 +68,7 @@
     align-items: center;
     margin-right: 13%;
     font-size: 1.5em;
+    margin-left: 2%;
 }
 
 .user-info .fa,
@@ -131,7 +131,7 @@
 
 // Mobile
 
-@media (min-width: 320px) and (max-width: 767.99px) {
+@media (min-width: 375px) and (max-width: 767.99px) {
     .main-nav {
         margin-left: -20px;
     }
