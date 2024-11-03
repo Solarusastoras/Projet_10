@@ -1,17 +1,19 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  title: Bank Argent API documentation 
+  title: Bank Argent API documentation
   description: API to manage bank account informations
   version: 1.0.0
-  termsOfService: 'http://swagger.io/terms/'
+  termsOfService: "http://swagger.io/terms/"
 host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
-    
+
 paths:
-/user/account:
+  /accounts:
     get:
+      security:
+        - Bearer: []
       tags:
         - Account Module
       summary: Retrieve all account information
@@ -19,15 +21,15 @@ paths:
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Successful retrieval of account information
-        '401':
+        "401":
           description: Unauthorized
-        '500':
+        "500":
           description: Internal Server Error
 
-/user/accounts/{accountId}/transactions:
-   get:
+  /accounts/{accountId}/transactions:
+    get:
       security:
         - Bearer: []
       tags:
@@ -38,70 +40,82 @@ paths:
           in: path
           description: Account ID
           required: true
-          type: integer
+          type: string
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Transactions retrieved successfully
           schema:
             type: array
             items:
-              $ref: '#/definitions/Transaction'
-        '401':
+              $ref: "#/definitions/Transaction"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: No transaction found
-        '500': 
+        "500":
           description: Internal Server Error
 
-/user/account/{accountId}/{Transaction:Id}/category/:
+  /accounts/{accountId}/transactions/{transactionId}/category:
     put:
+      security:
+        - Bearer: []
       tags:
         - Category Module
-      summary: Update account description
-      description: API to update account description
+      summary: Update transaction category
+      description: API to update transaction category
       parameters:
-        - name: descriptionId
+        - name: accountId
           in: path
           required: true
           type: string
-          description: ID of the description to update
+          description: ID of the account
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: ID of the transaction
         - name: body
           in: body
           required: true
           schema:
             type: object
             properties:
-              description:
+              category:
                 type: string
-                example: "New account description"
+                example: "New category"
       produces:
         - application/json
       responses:
-        '200':
-          description: Successful update of account description
-        '400':
+        "200":
+          description: Successful update of transaction category
+        "400":
           description: Bad request
-        '401':
+        "401":
           description: Unauthorized
-        '500':
+        "500":
           description: Internal Server Error
 
-
-/user/account/{accountId}/{Transaction:Id}/note/:
-
+  /accounts/{accountId}/transactions/{transactionId}/note:
     post:
+      security:
+        - Bearer: []
       tags:
         - Note Module
-      summary: Create a note
-      description: API to create a note
+      summary: Create a note for a transaction
+      description: API to create a note for a transaction
       parameters:
-        - name: noteId
+        - name: accountId
           in: path
           required: true
           type: string
-          description: ID of the note to create
+          description: ID of the account
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: ID of the transaction
         - name: body
           in: body
           required: true
@@ -114,49 +128,64 @@ paths:
       produces:
         - application/json
       responses:
-        '201':
+        "201":
           description: Note created successfully
-        '400':
+        "400":
           description: Bad request
-        '401':
+        "401":
           description: Unauthorized
-        '500':
+        "500":
           description: Internal Server Error
 
     delete:
+      security:
+        - Bearer: []
       tags:
         - Note Module
-      summary: Delete a note
-      description: API to delete a note
+      summary: Delete a note for a transaction
+      description: API to delete a note for a transaction
       parameters:
-        - name: noteId
+        - name: accountId
           in: path
           required: true
           type: string
-          description: ID of the note to delete
+          description: ID of the account
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: ID of the transaction
+       
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Note deleted successfully
-        '400':
+        "400":
           description: Bad request
-        '401':
+        "401":
           description: Unauthorized
-        '500':
+        "500":
           description: Internal Server Error
 
     put:
+      security:
+        - Bearer: []
       tags:
         - Note Module
-      summary: Update a note
-      description: API to update a note
+      summary: Update a note for a transaction
+      description: API to update a note for a transaction
       parameters:
-        - name: noteId
+        - name: accountId
           in: path
           required: true
           type: string
-          description: ID of the note to update
+          description: ID of the account
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: ID of the transaction
         - name: body
           in: body
           required: true
@@ -169,13 +198,13 @@ paths:
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Note updated successfully
-        '400':
+        "400":
           description: Bad request
-        '401':
+        "401":
           description: Unauthorized
-        '500':
+        "500":
           description: Internal Server Error
 
 securityDefinitions:
@@ -188,9 +217,9 @@ definitions:
   ApiResponse:
     type: object
     properties:
-      status: 
+      status:
         type: integer
-      message: 
+      message:
         type: string
 
   Account:
@@ -198,16 +227,16 @@ definitions:
     properties:
       id:
         type: integer
-      name: 
+      name:
         type: string
-      accountNumber: 
+      accountNumber:
         type: string
       balance:
         type: number
         format: float
       typeAccount:
         type: string
-            
+
   Transaction:
     type: object
     properties:
@@ -218,74 +247,23 @@ definitions:
       amount:
         type: number
         format: float
-      date: 
+      date:
         type: string
         format: date
-      balance: 
+      balance:
         type: number
         format: float
       transactionType:
-        type: string  
+        type: string
       note:
         type: string
       category:
         type: string
-          
+
   Category:
     type: object
-    properties: 
+    properties:
       id:
         type: integer
-      name: 
-        type: string
-
-  securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: Authorization
-    in: header
-
-  definitions:
-  User:
-    properties:
-      email:
-        type: string
-        description: user email
-      password:
-        type: string
-        description: user password
-      firstName:
-        type: string
-        description: user first name
-      lastName:
-        type: string
-        description: user last name
-      userName:
-        type: string
-        description: user public name
- 
-ApiResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      body:
-        type: object
-        properties:
-          id:
-            type: string
-          email:
-            type: string
-LoginResponse:
-    type: object
-    properties:
-      token:
-        type: string
-
-UserProfile:
-    type: object
-    properties:
-      userName:
+      name:
         type: string
