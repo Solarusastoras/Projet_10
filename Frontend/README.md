@@ -11,6 +11,9 @@ go to Frontend in terminal with cd
 install node_modulles with :
 npm install
 
+install Redux 
+npm install @reduxjs/toolkit react-redux
+
 And run React App with :
 npm run start
 
