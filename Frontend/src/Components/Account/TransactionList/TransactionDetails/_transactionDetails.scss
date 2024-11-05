@@ -1,22 +1,45 @@
-.transaction-details {
-    background-color: #00bc77;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 15px;
-    width: 77%;
-    margin: -15px auto 15px auto;
+// Définition des variables
+$primary-color: #00bc77;
+$secondary-color: white;
+$font-size-default: 1rem;
+$font-size-small: 0.7rem;
+$font-size-large: 1.5rem;
+$border-radius-default: 5px;
+$margin-default: 10px;
+$padding-default: 15px;
+$width-default: 77%;
+$width-editing: 68%;
 
-    // Mode editing
-    &.editing {
-        width: 68%;
+// Animation slide-bottom
+@keyframes slide-bottom {
+    0% {
+        transform: translateY(-10%);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 
 .slide-bottom {
     -webkit-animation: slide-bottom 0.6s ease-in-out both;
     animation: slide-bottom 0.6s ease-in-out both;
+}
+
+// Styles généraux
+.transaction-details {
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: none;
+    border-radius: $border-radius-default;
+    margin-bottom: $margin-default;
+    padding: $padding-default;
+    width: $width-default;
+    margin: -$margin-default auto $margin-default auto;
+
+    // Mode editing
+    &.editing {
+        width: $width-editing;
+    }
 }
 
 .transaction_detail_row {
@@ -44,7 +67,7 @@
 }
 
 .edit-icon_pencil {
-    color: white;
+    color: $secondary-color;
     font-size: 0.8rem; // Taille réduite
     margin-left: 8px;
 }
@@ -62,12 +85,12 @@
 @media (min-width: 375px) and (max-width: 767.99px) {
     .transaction-details {
         width: 75%;
-        font-size: 0.7rem;
+        font-size: $font-size-small;
     }
 
     .marge_r_type,
     .marge_r_category,
     .marge_r_note {
-        left: 37%;
+        left: 25%;
     }
 }

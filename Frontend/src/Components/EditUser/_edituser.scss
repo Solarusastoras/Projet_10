@@ -1,37 +1,50 @@
+// Définition des variables
+$font-size-default: 1rem;
+$color-grey: grey;
+$color-black: black;
+$color-red: red;
+$margin-bottom-default: 20px;
+$margin-right-default: 10px;
+$padding-default: 2px;
+$padding-horizontal-buttons: 30px;
+$font-weight-normal: 400;
+
+// Styles généraux
 .new_username {
-  margin-bottom: 20px;
-  font-size: 1rem;
-  color: grey;
+  margin-bottom: $margin-bottom-default;
+  font-size: $font-size-default;
+  color: $color-grey;
   width: 9%;
-  padding: 2px;
+  padding: $padding-default;
 }
 
 .h1_color,
 .username_color {
-  color: black;
-  font-weight: 400;
+  color: $color-black;
+  font-weight: $font-weight-normal;
 }
 
 .error {
-  color: red;
+  color: $color-red;
   margin-top: 10px;
 }
 
 label {
-  font-size: 1rem;
-  margin-right: 10px;
-  color: black;
+  font-size: $font-size-default;
+  margin-right: $margin-right-default;
+  color: $color-black;
 }
 
 .marge_d {
-  margin-right: 10px;
+  margin-right: $margin-right-default;
 }
 
 .edit-buttons {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: $padding-horizontal-buttons;
+  padding-right: $padding-horizontal-buttons;
 }
 
+// Media queries
 @media (min-width: 375px) and (max-width: 767.99px) {
   .new_username {
     width: 25%;

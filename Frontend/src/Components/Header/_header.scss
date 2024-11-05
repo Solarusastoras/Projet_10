@@ -1,18 +1,41 @@
+// Définition des variables
+$primary-color: #61b37b;
+$secondary-color: #2c3e50;
+$white-color: #fff;
+$font-size-default: 1rem;
+$font-size-small: 0.875rem;
+$font-size-large: 2rem;
+$font-size-medium: 1.5rem;
+$font-weight-bold: bold;
+$font-weight-normal: 500;
+$margin-default: 10px;
+$padding-default: 5px;
+$padding-horizontal: 20px;
+$padding-circle: 3px;
+$border-radius-circle: 50%;
+$icon-size-default: 20px;
+$icon-size-small: 10px;
+$icon-size-large: 30px;
+$icon-size-medium: 50px;
+$icon-spacing-default: 10px;
+$icon-spacing-small: 5px;
+
+// Styles généraux
 .main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: $padding-default $padding-horizontal;
 }
 
 .main-nav a,
 .signout-spacing {
-    font-weight: bold;
-    color: #2c3e50;
+    font-weight: $font-weight-bold;
+    color: $secondary-color;
 }
 
 .main-nav a.router-link-exact-active {
-    color: #42b983;
+    color: $primary-color;
 }
 
 .main-nav-items {
@@ -25,10 +48,10 @@
     margin-right: 0.5rem;
     display: flex;
     align-items: center;
-}
 
-.main-nav-item:hover {
-    text-decoration: underline;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .main-nav-logo {
@@ -42,7 +65,7 @@
 }
 
 .header {
-    color: #fff;
+    color: $white-color;
     margin-bottom: 2rem;
 }
 
@@ -75,74 +98,73 @@
 .user-info .fa,
 .user-info .svg-inline--fa,
 .main-nav-logo-settings {
-    margin-right: 30px;
+    margin-right: $icon-spacing-default;
 }
 
 .user-info p,
 .user-info i {
-    margin-right: 10px;
+    margin-right: $margin-default;
 }
 
 .fa-gear,
 .main-nav-logo-vault,
 .edit-header,
 .main-nav-logo-settings {
-    color: #61b37b;
+    color: $primary-color;
 }
 
 .icon-spacing {
-    margin-right: 10px;
+    margin-right: $icon-spacing-default;
 }
 
 .main-nav-logo-vault {
-    width: 50px;
+    width: $icon-size-medium;
     height: 52px;
-    margin-top: 5px;
-    padding: 5px;
+    margin-top: $padding-default;
+    padding: $padding-default;
 }
 
 .weight_header {
-    font-weight: 500;
-    font-size: 2rem;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-large;
 }
 
 .circle-icon {
-    background-color: #61b37b;
-    color: white;
-    border-radius: 50%;
-    padding: 3px;
-    width: 50px;
-    height: 50px;
+    background-color: $primary-color;
+    color: $white-color;
+    border-radius: $border-radius-circle;
+    padding: $padding-circle;
+    width: $icon-size-medium;
+    height: $icon-size-medium;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .fa-user {
-    width: 20px;
-    height: 20px;
-    padding: 10px;
+    width: $icon-size-default;
+    height: $icon-size-default;
+    padding: $padding-default * 2;
 }
 
 .main-nav-logo-settings {
     filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(80deg) brightness(90%) contrast(100%);
-    width: 30px;
+    width: $icon-size-large;
     height: 32px;
 }
 
 // Mobile
-
 @media (min-width: 375px) and (max-width: 767.99px) {
     .main-nav-logo {
-        margin-left: -10px;
+        margin-left: -6%;
     }
 
     .main-nav-items {
-        margin-left: 3%;
+        margin-left: 1%;
     }
 
     .signout-spacing {
-        font-size: 14px;
+        font-size: $font-size-small;
     }
 
     // Edit mode
@@ -169,55 +191,55 @@
     .user-info .fa,
     .user-info .svg-inline--fa,
     .main-nav-logo-settings {
-        margin-right: 10px;
+        margin-right: $icon-spacing-small;
     }
 
     .user-info p,
     .user-info i {
-        margin-right: 5px;
+        margin-right: $icon-spacing-small;
     }
 
     .fa-gear,
     .main-nav-logo-vault,
     .edit-header,
     .main-nav-logo-settings {
-        color: #61b37b;
+        color: $primary-color;
     }
 
     .icon-spacing {
-        margin-right: 5px;
+        margin-right: $icon-spacing-small;
     }
 
     .main-nav-logo-vault {
-        width: 20px;
-        height: 22px;
-        margin-top: 5px;
-        padding: 3px;
+        width: $icon-size-small * 2;
+        height: $icon-size-small * 2.2;
+        margin-top: $padding-default;
+        padding: $padding-default / 2;
     }
 
     .weight_header {
-        font-weight: 500;
-        font-size: 1.5rem;
+        font-weight: $font-weight-normal;
+        font-size: $font-size-medium;
     }
 
     .circle-icon {
-        padding: 3px;
-        width: 20px;
-        height: 20px;
+        padding: $padding-circle;
+        width: $icon-size-small * 2;
+        height: $icon-size-small * 2;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .fa-user {
-        width: 10px;
-        height: 10px;
-        padding: 5px;
+        width: $icon-size-small;
+        height: $icon-size-small;
+        padding: $padding-default;
     }
 
     .main-nav-logo-settings {
         filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(80deg) brightness(90%) contrast(100%);
-        width: 20px;
-        height: 22px;
+        width: $icon-size-small * 2;
+        height: $icon-size-small * 2.2;
     }
 }

@@ -1,18 +1,33 @@
+// Définition des variables
+$font-size-default: 1rem;
+$font-size-large: 2.5rem;
+$font-size-medium: 1.25rem;
+$font-size-small: 1.7rem;
+$color-white: white;
+$color-dark: #3d3d3d;
+$margin-default: 0.5rem;
+$margin-left-default: 10px;
+$padding-default: 1rem;
+$border-radius-default: 5px;
+$font-weight-bold: bold;
+$font-weight-normal: normal;
+
+// Styles généraux
 .account-amount {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: $font-size-large;
+  font-weight: $font-weight-bold;
 }
 
-.account-amount-description {
+.account-amount-description,
+.account-title,
+.account-amount {
   margin: 0;
 }
 
 .account-title {
-  margin: 0;
   padding: 0;
-  font-size: 1rem;
-  font-weight: normal;
+  font-size: $font-size-default;
+  font-weight: $font-weight-normal;
 }
 
 .account-content-wrapper {
@@ -21,32 +36,31 @@
 }
 
 .account-title {
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-size: $font-size-medium;
+  font-weight: $font-weight-bold;
 }
 
 .account-amount,
 .account-description {
-  margin: 0.5rem 0;
+  margin: $margin-default 0;
 }
 
 // Mode editing
-
 .account_editing {
-  background-color: #3d3d3d;
-  color: white;
-  padding: 1rem;
+  background-color: $color-dark;
+  color: $color-white;
+  padding: $padding-default;
   border: none;
-  border-radius: 5px;
+  border-radius: $border-radius-default;
   width: 70%;
 }
 
 .edit-button {
-  margin-left: 10px;
+  margin-left: $margin-left-default;
 }
 
 .arrow_right {
-  color: white;
+  color: $color-white;
   position: absolute;
   right: 17%;
   margin-top: -30px;
@@ -64,12 +78,12 @@
     width: 80%;
   }
   .account-amount {
-    font-size: 1.7rem;
+    font-size: $font-size-small;
   }
 
   .account-amount-description,
   .account-title {
-    font-size: 1rem;
+    font-size: $font-size-default;
   }
 
   .arrow_right {

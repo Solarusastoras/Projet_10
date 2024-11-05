@@ -1,52 +1,78 @@
+// Définition des variables
+$background-image: url("../../img/bank-tree.webp");
+$background-position-mobile: 0 -50px;
+$background-position-desktop: 0% 33%;
+$background-size: cover;
+$background-repeat: no-repeat;
+$hero-height-mobile: 300px;
+$hero-height-desktop: 400px;
+$hero-content-width-mobile: 200px;
+$hero-content-width-desktop: 300px;
+$hero-content-padding: 2rem;
+$hero-content-bg-color: white;
+$hero-content-top-mobile: 2rem;
+$hero-content-top-desktop: 50px;
+$hero-content-right-desktop: 50px;
+$hero-content-margin-desktop: 2rem;
+$font-weight-bold: bold;
+$font-size-default: 1rem;
+$font-size-small: 0.9rem;
+$font-size-large: 1.5rem;
+$font-size-medium: 1.2rem;
+$margin-zero: 0;
+$margin-bottom-zero: 0;
+
+// Styles généraux
 .hero {
-  background-image: url("../../img/bank-tree.webp");
-  background-position: 0 -50px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 300px;
+  background-image: $background-image;
+  background-position: $background-position-mobile;
+  background-size: $background-size;
+  background-repeat: $background-repeat;
+  height: $hero-height-mobile;
   position: relative;
 }
 
 .hero-content {
   position: relative;
-  top: 2rem;
-  width: 200px;
-  background: white;
-  padding: 2rem;
+  top: $hero-content-top-mobile;
+  width: $hero-content-width-mobile;
+  background: $hero-content-bg-color;
+  padding: $hero-content-padding;
   text-align: left;
-  margin: 0 auto;
+  margin: $margin-zero auto;
 }
 
 .hero-content .subtitle {
-  font-weight: bold;
-  font-size: 1rem;
-  margin: 0;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-default;
+  margin: $margin-zero;
 }
 
 .hero-content .text {
-  margin-bottom: 0;
-  font-size: 0.9rem;
+  margin-bottom: $margin-bottom-zero;
+  font-size: $font-size-small;
 }
 
+// Media queries
 @media (min-width: 920px) {
   .hero {
-    height: 400px;
-    background-position: 0% 33%;
+    height: $hero-height-desktop;
+    background-position: $background-position-desktop;
   }
 
   .hero-content {
     position: absolute;
-    top: 50px;
-    right: 50px;
-    width: 300px;
-    margin: 2rem;
+    top: $hero-content-top-desktop;
+    right: $hero-content-right-desktop;
+    width: $hero-content-width-desktop;
+    margin: $hero-content-margin-desktop;
   }
 
   .hero-content .subtitle {
-    font-size: 1.5rem;
+    font-size: $font-size-large;
   }
 
   .hero-content .text {
-    font-size: 1.2rem;
+    font-size: $font-size-medium;
   }
 }
