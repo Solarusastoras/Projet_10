@@ -5,7 +5,8 @@
     padding: 5px 20px;
 }
 
-.main-nav a {
+.main-nav a,
+.signout-spacing {
     font-weight: bold;
     color: #2c3e50;
 }
@@ -132,8 +133,8 @@
 // Mobile
 
 @media (min-width: 375px) and (max-width: 767.99px) {
-    .main-nav {
-        margin-left: -20px;
+    .main-nav-logo {
+        margin-left: -10px;
     }
 
     .main-nav-items {
