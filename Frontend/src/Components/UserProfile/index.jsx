@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../Store/AuthAction.js";
 import { useNavigate } from "react-router-dom";
-import "./_userprofile.scss"; // Assurez-vous d'importer le fichier SCSS
+import "./_userprofile.scss"; 
 
 const UserProfile = () => {
   const dispatch = useDispatch();

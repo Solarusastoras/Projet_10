@@ -28,6 +28,8 @@ const authSlice = createSlice({
       state.userName = null;
     },
   },
+
+  // Gestion des actions asynchrones pour la connexion, la récupération du profil utilisateur et la mise à jour du nom d'utilisateur
   extraReducers: (builder) => {
     builder
       // Gestion de l'état pendant la requête de connexion
