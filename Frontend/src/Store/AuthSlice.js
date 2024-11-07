@@ -26,12 +26,20 @@ const authSlice = createSlice({
       state.firstName = null;
       state.lastName = null;
       state.userName = null;
+      state.error = null; // Réinitialiser l'erreur lors de la déconnexion
+    },
+    // Action pour réinitialiser l'erreur
+    resetError: (state) => {
+      state.error = null; // Réinitialiser l'erreur
     },
   },
   extraReducers: (builder) => {
     builder
       // Gestion de l'état pendant la requête de connexion
-      .addCase(loginUser.pending, (state) => handlePending(state))
+      .addCase(loginUser.pending, (state) => {
+        handlePending(state);
+        state.error = null; // Réinitialiser l'erreur lors d'une nouvelle tentative de connexion
+      })
       // Gestion de l'état lorsque la requête de connexion réussit
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
@@ -44,7 +52,7 @@ const authSlice = createSlice({
       // Gestion de l'état lorsque la requête de connexion échoue
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload;
+        state.error = action.payload; // Stocker le message d'erreur
       })
       // Gestion de l'état pendant la requête de récupération du profil utilisateur
       .addCase(fetchUserProfile.pending, (state) => handlePending(state))
@@ -78,7 +86,7 @@ const authSlice = createSlice({
 });
 
 // Exporter l'action logout pour pouvoir l'utiliser dans les composants
-export const { logout } = authSlice.actions;
+export const { logout, resetError } = authSlice.actions;
 
 // Exporter le reducer pour l'ajouter au store Redux
 export default authSlice.reducer;

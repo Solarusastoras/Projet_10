@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../Store/AuthAction";
+import { loginUser, logoutUser } from "../../Store/AuthAction";
 import useTimeouts from "../utils/UseTimeouts"; 
 import "./_form.scss";
 
@@ -56,9 +56,9 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-wrapper">
-        <label htmlFor="username">Email</label>
+        <label htmlFor="username">Username</label>
         <input
-          type="mail"
+          type="email" // Correction du type à "email"
           id="username"
           name="username"
           value={username}
@@ -84,7 +84,7 @@ const Form = () => {
       <button className="sign-in-button" type="submit" disabled={status === "loading"}>
         {status === "loading" ? "Loading..." : "Sign In"}
       </button>
-      {status === "failed" && <p className="error">{error}</p>}
+      {status === "failed" && <p className="error">{error}</p>} {/* Afficher le message d'erreur */}
       {showWarning && <p className="warning">You will be logged out in 5 minutes due to inactivity.</p>}
       {token && <p className="countdown">Time remaining: {formatTime(countdown)}</p>}
     </form>
