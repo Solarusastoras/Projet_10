@@ -56,9 +56,9 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-wrapper">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Email</label>
         <input
-          type="text"
+          type="mail"
           id="username"
           name="username"
           value={username}
