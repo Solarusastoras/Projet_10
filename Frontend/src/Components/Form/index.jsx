@@ -8,6 +8,7 @@ import "./_form.scss";
 const Form = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [countdown, setCountdown] = useState(10 * 60); // 10 minutes en secondes
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token, loading, error } = useSelector((state) => state.auth);
@@ -24,13 +25,33 @@ const Form = () => {
       resetTimeouts();
       document.addEventListener("mousemove", resetTimeouts);
       document.addEventListener("keydown", resetTimeouts);
-    }
 
-    return () => {
-      document.removeEventListener("mousemove", resetTimeouts);
-      document.removeEventListener("keydown", resetTimeouts);
-    };
-  }, [token, navigate, resetTimeouts]);
+      // Démarrer le compte à rebours
+      const countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => {
+          if (prevCountdown <= 1) {
+            clearInterval(countdownInterval);
+            dispatch(logoutUser());
+            navigate("/login");
+            return 0;
+          }
+          return prevCountdown - 1;
+        });
+      }, 1000);
+
+      return () => {
+        clearInterval(countdownInterval);
+        document.removeEventListener("mousemove", resetTimeouts);
+        document.removeEventListener("keydown", resetTimeouts);
+      };
+    }
+  }, [token, navigate, resetTimeouts, dispatch]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -65,6 +86,7 @@ const Form = () => {
       </button>
       {error && <p className="error">{error}</p>}
       {showWarning && <p className="warning">You will be logged out in 2 minutes due to inactivity.</p>}
+      {token && <p className="countdown">Time remaining: {formatTime(countdown)}</p>}
     </form>
   );
 };
