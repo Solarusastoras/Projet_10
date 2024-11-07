@@ -14,7 +14,7 @@ import Userlogin from "../../img/user.webp";
 const Header = ({ isEditing }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -57,7 +57,7 @@ const Header = ({ isEditing }) => {
         />
       </Link>
       <div className="main-nav-items">
-        {user ? (
+        {token ? (
           <>
             <Link to="/user" className="main-nav-item">
               <div className="circle_user_login_bk">

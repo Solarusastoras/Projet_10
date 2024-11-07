@@ -84,11 +84,9 @@ export const updateUserProfileUsername = createAsyncThunk(
       return rejectWithValue(error.response?.data || error.message);
     }
   }
-  
 );
 
-
+// Action pour déconnecter l'utilisateur
 export const logoutUser = createAsyncThunk('auth/logoutUser', async (_, { dispatch }) => {
   dispatch(logout());
 });
-

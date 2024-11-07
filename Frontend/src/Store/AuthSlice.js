@@ -28,8 +28,6 @@ const authSlice = createSlice({
       state.userName = null;
     },
   },
-
-  // Gestion des actions asynchrones pour la connexion, la récupération du profil utilisateur et la mise à jour du nom d'utilisateur
   extraReducers: (builder) => {
     builder
       // Gestion de l'état pendant la requête de connexion
@@ -44,9 +42,10 @@ const authSlice = createSlice({
         state.userName = action.payload.userProfile.userName;
       })
       // Gestion de l'état lorsque la requête de connexion échoue
-      .addCase(loginUser.rejected, (state, action) =>
-        handleRejected(state, action)
-      )
+      .addCase(loginUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
       // Gestion de l'état pendant la requête de récupération du profil utilisateur
       .addCase(fetchUserProfile.pending, (state) => handlePending(state))
       // Gestion de l'état lorsque la requête de récupération du profil utilisateur réussit

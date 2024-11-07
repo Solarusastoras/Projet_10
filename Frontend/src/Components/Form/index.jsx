@@ -11,7 +11,7 @@ const Form = () => {
   const [countdown, setCountdown] = useState(10 * 60); // 10 minutes en secondes
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token, loading, error } = useSelector((state) => state.auth);
+  const { token, status, error } = useSelector((state) => state.auth);
   const { resetTimeouts, showWarning } = useTimeouts();
 
   const handleSubmit = (event) => {
@@ -81,11 +81,11 @@ const Form = () => {
         <input type="checkbox" id="remember-me" />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      <button className="sign-in-button" type="submit" disabled={loading}>
-        {loading ? "Loading..." : "Sign In"}
+      <button className="sign-in-button" type="submit" disabled={status === "loading"}>
+        {status === "loading" ? "Loading..." : "Sign In"}
       </button>
-      {error && <p className="error">{error}</p>}
-      {showWarning && <p className="warning">You will be logged out in 2 minutes due to inactivity.</p>}
+      {status === "failed" && <p className="error">{error}</p>}
+      {showWarning && <p className="warning">You will be logged out in 5 minutes due to inactivity.</p>}
       {token && <p className="countdown">Time remaining: {formatTime(countdown)}</p>}
     </form>
   );
