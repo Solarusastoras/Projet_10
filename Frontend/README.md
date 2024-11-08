@@ -1,15 +1,12 @@
 You need to install Mongo with localhost27017
 
-You need to install node_modules for Backend and Frontend.
+You need to install node_modules for Backend
 
 For Backend go to readme.md in Backend
 
 For Frontend
 
 go to Frontend in terminal with cd
-
-install node_modulles with :
-npm install
 
 install Redux 
 npm install @reduxjs/toolkit react-redux
